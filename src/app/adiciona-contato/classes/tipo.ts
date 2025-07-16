@@ -1,6 +1,6 @@
 export enum Tipo {
-    'amigo',
-    'familiar',
-    'trabalho',
-    'escola'
+    amigo = 'amigo',
+    familiar = 'familiar',
+    trabalho = 'trabalho',
+    outros = 'outros'
 }

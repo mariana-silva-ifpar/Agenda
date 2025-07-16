@@ -63,4 +63,21 @@ export class Contato {
 	set tipo(value: Tipo) {  
 		this._tipo = value;  
 	}
+
+	public static criarContato(
+		_nome: string,
+		_telefone: string,
+		_email: string,
+		_aniversario: string,
+		_tipo: Tipo,
+	): Contato {
+		const contato = new Contato();
+		contato.nome = _nome;
+		contato.telefone = _telefone;
+		contato.email = _email;
+		contato._aniversario = _aniversario;
+		contato.tipo = _tipo;
+		return contato;
+	}
+	
 }

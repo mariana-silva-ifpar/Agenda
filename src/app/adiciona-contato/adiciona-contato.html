@@ -1,20 +1,20 @@
 <div>
     <form>
         <label id="nome"> Nome: </label>
-        <input id="nome" placeholder="Digite o nome">
+        <input id="nome" placeholder="Digite o nome" formControlName="nome">
 
         <label id="telefone"> Telefone: </label>
-        <input id="telefone" placeholder="Digite o telefone">
+        <input id="telefone" placeholder="Digite o telefone" formControlName="telefone">
 
         <label id="email"> Email: </label>
-        <input id="email" placeholder="Digite o email">
+        <input id="email" placeholder="Digite o email" formControlName="email">
 
         <label id="aniversario"> Aniversário: </label>
-        <input id="aniversario" type="date" placeholder="Digite o aniversario">
+        <input id="aniversario" type="date" placeholder="Digite o aniversario" formControlName="aniversario">
 
         <label id="Tipo"> Tipo: </label>
         <select>
-            <option> </option>
+            <option *ngFor="let tipo of tipos" [value]="tipo"> {{tipo}} </option>
         </select>
     </form>
 </div>
