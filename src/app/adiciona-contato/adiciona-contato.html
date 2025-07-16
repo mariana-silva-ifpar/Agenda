@@ -1,20 +1,50 @@
-<div>
-    <form>
+<div class="main">
+<h1> Adicionar contato </h1>
+
+<div class="form div">
+    <form [formGroup]="form">
         <label id="nome"> Nome: </label>
         <input id="nome" placeholder="Digite o nome" formControlName="nome">
 
         <label id="telefone"> Telefone: </label>
-        <input id="telefone" placeholder="Digite o telefone" formControlName="telefone">
+        <input id="telefone" placeholder="(84) 90000-0000" formControlName="telefone" [mask]="'(00) 90000-0000'">
 
         <label id="email"> Email: </label>
-        <input id="email" placeholder="Digite o email" formControlName="email">
+        <input id="email" type="email" placeholder="Digite o email" formControlName="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
 
         <label id="aniversario"> Aniversário: </label>
         <input id="aniversario" type="date" placeholder="Digite o aniversario" formControlName="aniversario">
 
         <label id="Tipo"> Tipo: </label>
-        <select>
-            <option *ngFor="let tipo of tipos" [value]="tipo"> {{tipo}} </option>
+        <select formControlName="tipo">
+            <option [value]="null"> Selecione </option>
+            <option *ngFor="let name of tipos" [value]="name"> {{name}} </option>
         </select>
+
+        <button class="submit" (click)="salvarContato()"> Salvar </button>
     </form>
+</div>
+
+<div class="list div" *ngIf="contatos.length > 0">
+    <h1> Agenda </h1>
+
+    <table>
+        <thead>
+            <th> Nome </th>
+            <th> Telefone </th>
+            <th> Email </th>
+            <th> Aniversário </th>
+            <th> Tipo </th>
+        </thead>
+
+        <tr *ngFor="let contato of contatos">
+            <td> {{contato.nome}} </td>
+            <td> {{contato.telefone | telefone}} </td>
+            <td> {{contato.email}} </td>
+            <td> {{contato.aniversario | date:'dd/MM/yyyy'}} </td>
+            <td> {{contato.tipo}} </td>
+        </tr>
+
+    </table>
+</div> 
 </div>
