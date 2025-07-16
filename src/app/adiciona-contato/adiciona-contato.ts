@@ -32,8 +32,9 @@ export class AdicionaContato {
 
   salvarContato(){
     if (this.form.valid){
+
+    //verificação de telefone já registrado
     const telefone = this.form.get('telefone')?.value;
-    
     const telefoneExistente = this.contatos.some(
       contato => contato.telefone === telefone
     );
@@ -42,6 +43,8 @@ export class AdicionaContato {
       alert('Já existe um contato com este telefone!');
       return;
     }
+
+    //adição do contato na lista de contatos
       const contato = Contato.criarContato(this.form.value);
       this.contatos.push(contato);
       this.form.reset({})
