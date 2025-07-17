@@ -21,7 +21,7 @@
             <option *ngFor="let name of tipos" [value]="name"> {{name}} </option>
         </select>
 
-        <button class="submit" (click)="salvarContato()"> Adicionar </button>
+        <button class="submit" [disabled]="!form.valid" (click)="salvarContato()"> Adicionar </button>
     </form>
 </div>
 
