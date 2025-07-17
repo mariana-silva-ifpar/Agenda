@@ -17,6 +17,7 @@
 
         <label id="Tipo"> Tipo: </label>
         <select formControlName="tipo">
+            <option [value]="null"> Selecione </option>
             <option *ngFor="let name of tipos" [value]="name"> {{name}} </option>
         </select>
 
