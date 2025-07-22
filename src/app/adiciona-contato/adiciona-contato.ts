@@ -33,6 +33,12 @@ export class AdicionaContato {
   salvarContato(){
     if (this.form.valid){
 
+    //verificação se o tipo ta selecionado
+    if(this.form.get('tipo')?.value === 'null'){
+      alert('Selecione um tipo.');
+      return;
+    }
+
     //verificação de telefone já registrado
     const telefone = this.form.get('telefone')?.value;
     const telefoneExistente = this.contatos.some(
