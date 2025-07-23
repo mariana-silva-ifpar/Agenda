@@ -90,3 +90,15 @@ h1{
     display: flex;
     width: 70%;
 }
+
+@media(max-width: 961px) {
+    .editar{
+        margin-top: .25rem;
+    }
+}
+
+@media(min-width: 962px) {
+    .editar{
+        margin-left: .25rem;
+    }
+}
