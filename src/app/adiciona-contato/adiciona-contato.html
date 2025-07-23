@@ -1,5 +1,5 @@
 <div class="main">
-<h1> Adicionar contato </h1>
+<h1> {{ editando ? 'Editar contato' : 'Adicionar contato'}} </h1>
 
 <div class="form div">
     <form [formGroup]="form">
@@ -21,7 +21,8 @@
             <option *ngFor="let name of tipos" [value]="name"> {{name}} </option>
         </select>
 
-        <button class="submit" [disabled]="!form.valid" (click)="salvarContato()"> Adicionar </button>
+        <button class="submit" [disabled]="!form.valid" (click)="salvarContato()"> {{editando ? 'Atualizar' : 'Adicionar'}} </button>
+        <button *ngIf="editando" class="excluir" [disabled]="!form.valid" (click)="cancelarEdicao()"> Cancelar </button>
     </form>
 </div>
 
@@ -38,15 +39,15 @@
             <th> </th>
         </thead>
 
-        <tr *ngFor="let contato of contatos">
+        <tr *ngFor="let contato of contatos; let i = index">
             <td> {{contato.nome}} </td>
             <td> {{contato.telefone | telefone}} </td>
             <td> {{contato.email}} </td>
             <td> {{contato.aniversario | date:'dd/MM/yyyy'}} </td>
             <td> {{contato.tipo}} </td>
             <td>
-                <button class="excluir" (click)="excluirContato(contato.telefone)">
-                    Excluir </button>
+                <button class="excluir" (click)="excluirContato(contato.telefone)"> Excluir </button>
+                <button class="editar" (click)="editarContato(i)"> Editar </button>
             </td>
         </tr>
 

@@ -17,6 +17,8 @@ export class AdicionaContato {
   public tipos = Object.values(Tipo);
   public form: FormGroup;
   contatos: Contato[] = [];
+  editando = false;
+  contatoIndex: number | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +30,26 @@ export class AdicionaContato {
       aniversario: [null, Validators.required],
       tipo: [null, Validators.required],
     })
+  }
+
+  editarContato(index:number){
+    this.editando = true;
+    this.contatoIndex = index;
+    const contato = this.contatos[index];
+
+    this.form.patchValue({
+      nome: contato.nome,
+      telefone: contato.telefone,
+      email: contato.email,
+      aniversario: contato.aniversario,
+      tipo: contato.tipo,
+    })
+  }
+
+  cancelarEdicao(){
+    this.editando = false;
+    this.contatoIndex = null;
+    this.form.reset();
   }
 
   salvarContato(){
@@ -42,7 +64,7 @@ export class AdicionaContato {
     //verificação de telefone já registrado
     const telefone = this.form.get('telefone')?.value;
     const telefoneExistente = this.contatos.some(
-      contato => contato.telefone === telefone
+      (contato, i) => contato.telefone === telefone && (!this.editando || i !== this.contatoIndex)
     );
 
     if (telefoneExistente) {
@@ -52,7 +74,13 @@ export class AdicionaContato {
 
     //adição do contato na lista de contatos
       const contato = Contato.criarContato(this.form.value);
-      this.contatos.push(contato);
+      if(this.editando && this.contatoIndex !== null){
+        this.contatos[this.contatoIndex] = contato;
+        this.editando = false;
+        this.contatoIndex = null;
+      } else{
+        this.contatos.push(contato);
+      }
       this.form.reset({})
     } else {
       alert('Todos os campos devem ser preenchidos.')
