@@ -22,6 +22,7 @@ form{
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 1.5rem;
     label{
         margin-top: 1rem;
         margin-bottom: .5rem;
@@ -36,6 +37,30 @@ form{
     margin-top: 2rem;
     margin-bottom: 1.5rem;
     background-color: #74bbb7 ;
+}
+
+.excluir{
+    height: 1.5rem;
+    border-radius: .3rem;
+    background-color: #bb7474;
+    transition: all 0.3s ease;
+}
+
+.excluir:hover{
+    background-color: #801c1c; ;
+    color: white;
+}
+
+.editar{
+    height: 1.5rem;
+    border-radius: .3rem;
+    background-color: #74bb83;
+    transition: all 0.3s ease;
+}
+
+.editar:hover{
+    background-color: #2a5233 ;
+    color: white;
 }
 
 .list{
