@@ -38,6 +38,19 @@ form{
     background-color: #74bbb7 ;
 }
 
+.excluir{
+    height: 1.5rem;
+    border-radius: .3rem;
+    background-color: #bb7474;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.excluir:hover{
+        background-color: #971919;
+        color: rgb(255, 255, 255);
+    }
+
 .list{
     padding: 0 !important;
     text-align: justify;

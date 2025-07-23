@@ -60,4 +60,13 @@ export class AdicionaContato {
 
   }
 
+  excluirContato(telefone: string){
+    if(confirm('Tem certeza que deseja excluir este contato?')){
+      const index = this.contatos.findIndex(contato => contato.telefone === telefone);
+      if(index !== -1){
+        this.contatos.splice(index,1)
+      }
+    }
+  }
+
 }
