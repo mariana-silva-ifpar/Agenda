@@ -25,8 +25,8 @@ export class AdicionaContato {
   ){
     this.form = this.fb.group({
       nome: [null, Validators.required],
-      telefone: [null, Validators.required],
-      email: [null, Validators.required],
+      telefone: [null, [Validators.required, Validators.pattern(/^\D*\d{2}\D*9\d{4}\D*\d{4}$/)]],
+      email: [null, [Validators.required, Validators.email]],
       aniversario: [null, Validators.required],
       tipo: [null, Validators.required],
     })
